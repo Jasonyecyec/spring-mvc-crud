@@ -16,6 +16,12 @@
           <element id="library" level="project" name="javax.servlet.jsp.jstl-1.2.1" />
         </element>
       </element>
+      <element id="directory" name="resources">
+        <element id="directory" name="css">
+          <element id="file-copy" path="$APPLICATION_HOME_DIR$/spring-and-hibernate-for-beginners-master/spring-hibernate-source-code-v26/04-spring-mvc-crud-5/web-customer-tracker-starter-files/WebContent/css/add-customer-style.css" />
+          <element id="file-copy" path="$APPLICATION_HOME_DIR$/spring-and-hibernate-for-beginners-master/spring-hibernate-source-code-v26/04-spring-mvc-crud-5/web-customer-tracker-starter-files/WebContent/css/style.css" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

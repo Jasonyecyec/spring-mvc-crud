@@ -11,15 +11,20 @@
 <html>
 <head>
     <title>List Customer</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
    <div id="wrapper">
-       <div class="header">
+       <div id="header">
             <h2>CRM - Customer Relationship Manager</h2>
        </div>
 
-       <div class="container">
-            <div class="content">
+       <button>
+           <a href="showFormAdd">Add Customer</a>
+       </button>
+
+       <div id="container">
+            <div id="content">
                 <table>
                     <tr>
                         <th>First Name</th>
@@ -33,6 +38,7 @@
                             <td>${tempCustomer.firstName}</td>
                             <td>${tempCustomer.lastName}</td>
                             <td>${tempCustomer.email}</td>
+                            <td><a href="/update">Update</a></td>
                         </tr>
                     </c:forEach>
 
