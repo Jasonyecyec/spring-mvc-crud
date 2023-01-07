@@ -17,13 +17,30 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     @Transactional
     public List<Customer> getCustomers() {
-        return this.customerDAO.getCustomers();
+        return customerDAO.getCustomers();
+    }
+    @Override
+    @Transactional
+    public Customer getCustomer(int customerId) {
+        return this.customerDAO.getCustomer(customerId);
     }
 
     @Override
     @Transactional
     public void saveCustomer(Customer customer) {
         this.customerDAO.saveCustomer(customer);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCustomer(int customerId) {
+        this.customerDAO.deleteCustomer(customerId);
+    }
+
+    @Override
+    @Transactional
+    public List<Customer> searchCustomers(String theSearchName) {
+        return customerDAO.searchCustomers(theSearchName);
     }
 
 

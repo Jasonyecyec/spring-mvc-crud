@@ -6,10 +6,7 @@ import com.jasonyecyec.springdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Entity;
 import java.util.List;
@@ -29,6 +26,7 @@ public class CustomerController {
 
         //add the customers to model
         model.addAttribute("customers",customerList);
+
         return "list-customer";
     }
 
@@ -49,5 +47,34 @@ public class CustomerController {
         return "redirect:/customer/list";
     }
 
+    @GetMapping("/showFormUpdate")
+    public String showFormUpdate(@RequestParam("customerId") int customerId, Model model){
+        //get the customer from the service
+        Customer customer = this.customerService.getCustomer(customerId);
+
+        //set customer as a model attribute to pre-populate the form
+        model.addAttribute("customer", customer);
+
+        //send over to our form
+        return "customer-form";
+    }
+
+    @GetMapping("/delete")
+    public String deleteCustomer(@RequestParam("customerId") int customerId){
+        //delete customer
+        this.customerService.deleteCustomer(customerId);
+        return "redirect:/customer/list";
+    }
+
+    @GetMapping("/search")
+    public String searchCustomers(@RequestParam("theSearchName") String theSearchName,
+                                  Model theModel) {
+        // search customers from the service
+        List<Customer> theCustomers = customerService.searchCustomers(theSearchName);
+
+        // add the customers to the model
+        theModel.addAttribute("customers", theCustomers);
+        return "list-customer";
+    }
 
 }
